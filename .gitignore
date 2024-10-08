@@ -1,0 +1,11 @@
+.vscode/
+.DS_Store
+*.pyc
+*.pyo
+*.pyd
+*.egg-info
+__pycache__
+/venv/
+/.venv/
+
+/simple_tracer/_version.py

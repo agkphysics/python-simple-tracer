@@ -3,7 +3,7 @@ build-backend = "setuptools.build_meta"
 requires = ["setuptools", "setuptools-scm", "wheel"]
 
 [project]
-authors = [{ name = "Your Name", email = "aaron.keesing@zozo.com" }]
+authors = [{ name = "Aaron Keesing", email = "aaron.keesing@zozo.com" }]
 name = "simple-tracer"
 description = "A simple tracer for Python 3.12+"
 classifiers = [

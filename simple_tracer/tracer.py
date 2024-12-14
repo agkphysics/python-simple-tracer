@@ -1,11 +1,12 @@
 import bisect
 import contextlib
+import gzip
 import json
 import sys
 import time
 import weakref
 from collections.abc import Callable
-from functools import wraps
+from functools import partial, wraps
 from itertools import dropwhile
 from types import (
     BuiltinFunctionType,
@@ -258,12 +259,13 @@ def write_events(filename: str = "trace.json") -> None:
             },
         ]
     )
-    with open(filename, "w") as f:
+    opener = partial(gzip.open, mode="wt") if filename.endswith(".gz") else partial(open, mode="w")
+    with opener(filename) as f:
         json.dump({"traceEvents": chrome_events}, f, separators=(",", ":"))
 
 
 @contextlib.contextmanager
-def tracer(filename: str = "trace.json"):
+def tracer(filename: str = "trace.json.gz"):
     setup_tracing()
     try:
         yield
